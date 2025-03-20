@@ -1,0 +1,50 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 03-20-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Add Account">
+        <table class="slds-table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        BillingState
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={rows} for:item="row" for:index="index">
+                <tr key={row.id}>
+                    <td>
+                        <lightning-input value={row.Name} data-index={index} data-name="Name" onchange={handleInputChange}></lightning-input>
+                    </td>
+                    <td>
+                        <lightning-input value={row.Description} data-index={index} data-name="Description" onchange={handleInputChange}></lightning-input>
+                    </td>
+                    <td>
+                        <lightning-input value={row.BillingState} data-index={index} data-name="BillingState"  onchange={handleInputChange}></lightning-input>
+                    </td>
+                    <td>
+                        <lightning-button label="Save" variant="brand" data-index={index} onclick={handleSave}></lightning-button>
+                        <lightning-button label="Delete" variant="destructive" data-index={index} onclick={handleDelete}></lightning-button>
+                    </td>
+                </tr>
+            </template>
+            </tbody>
+        </table>
+
+        <lightning-button label="Add Row" onclick={handleAddRow}></lightning-button>
+    </lightning-card>
+</template>
