@@ -7,6 +7,9 @@
 -->
 <template>
     <lightning-card title="Add Account">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading...."></lightning-spinner>
+        </template>
         <table class="slds-table">
             <thead>
                 <tr>
@@ -28,13 +31,13 @@
                 <template for:each={rows} for:item="row" for:index="index">
                 <tr key={row.id}>
                     <td>
-                        <lightning-input value={row.Name} data-index={index} data-name="Name" onchange={handleInputChange}></lightning-input>
+                        <lightning-input value={row.Name} data-index={index} data-name="Name" onchange={handleInputChange} placeholder="Enter name here....."></lightning-input>
                     </td>
                     <td>
-                        <lightning-input value={row.Description} data-index={index} data-name="Description" onchange={handleInputChange}></lightning-input>
+                        <lightning-input value={row.Description} data-index={index} data-name="Description" onchange={handleInputChange} placeholder="Enter description here....."></lightning-input>
                     </td>
                     <td>
-                        <lightning-input value={row.BillingState} data-index={index} data-name="BillingState"  onchange={handleInputChange}></lightning-input>
+                        <lightning-input value={row.BillingState} data-index={index} data-name="BillingState"  onchange={handleInputChange} placeholder="Enter Billing State here....."></lightning-input>
                     </td>
                     <td>
                         <lightning-button label="Save" variant="brand" data-index={index} onclick={handleSave}></lightning-button>
@@ -46,5 +49,6 @@
         </table>
 
         <lightning-button label="Add Row" onclick={handleAddRow}></lightning-button>
+
     </lightning-card>
 </template>

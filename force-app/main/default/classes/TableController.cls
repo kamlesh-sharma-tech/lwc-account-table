@@ -48,4 +48,17 @@ public class TableController {
         }
         return acc;
     }
+
+    @AuraEnabled 
+    public static Account updateAccount(String accountId, String name, String description, String billingState){
+        Account acc = [SELECT Id FROM Account Where Id =: accountId];
+
+        if(acc != null){
+            acc.Name = name;
+            acc.Description = description;
+            acc.BillingState = billingState;
+            update acc;
+        }
+        return acc;
+    }
 }
